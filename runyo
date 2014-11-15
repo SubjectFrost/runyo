@@ -8,5 +8,17 @@ YO_USERNAME=MALOMARO
 
 output=$("${@:1}")
 
-echo $output
+#echo $output
 
+output=$(echo "key=public&paste=$("${@:1}")" | curl -d @- http://paste.ee/api)
+
+
+string=$( echo $output | cut -c12-18 )
+if [ $string = "success" ]; then
+    paste_url=$( echo $output | cut -c36-40 )
+    echo $paste_url
+    ./yo $YO_TOKEN -t $YO_USERNAME -u "http://paste.ee/p/$paste_url"
+fi
+
+
+echo "Done"
