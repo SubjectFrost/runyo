@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#YO api token for authentication
+YO_TOKEN=b361d985-ed35-4ae1-81b0-d570e8819c20
+#Yo username to send to
+YO_USERNAME=MALOMARO
+
+
+output=$("${@:1}")
+
+echo $output
+
